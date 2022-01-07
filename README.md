@@ -44,6 +44,14 @@ flatten([[1, 2], [3, 4]])
 - `interleave(*iterables)` — Round-robin interleave
 - `flatten(nested)` — Flatten one level of nesting
 
+
+## Development
+
+```bash
+pip install -e .
+python -m pytest tests/ -v
+```
+
 ## License
 
 MIT
