@@ -1,0 +1,45 @@
+# philiprehberger-list-chunk
+
+Split iterables into evenly sized chunks.
+
+## Installation
+
+```bash
+pip install philiprehberger-list-chunk
+```
+
+## Usage
+
+```python
+from philiprehberger_list_chunk import chunk, chunk_by, sliding_window, interleave, flatten
+
+chunk([1, 2, 3, 4, 5], size=2)
+# [[1, 2], [3, 4], [5]]
+
+chunk([1, 2, 3], size=2, pad=0)
+# [[1, 2], [3, 0]]
+
+chunk_by([1, 1, 2, 2, 3], key=lambda x: x)
+# [[1, 1], [2, 2], [3]]
+
+sliding_window([1, 2, 3, 4, 5], size=3)
+# [[1, 2, 3], [2, 3, 4], [3, 4, 5]]
+
+interleave([1, 2, 3], ["a", "b", "c"])
+# [1, "a", 2, "b", 3, "c"]
+
+flatten([[1, 2], [3, 4]])
+# [1, 2, 3, 4]
+```
+
+## API
+
+- `chunk(items, size, pad=None)` — Fixed-size chunks
+- `chunk_by(items, key)` — Group consecutive elements by key
+- `sliding_window(items, size, step=1)` — Sliding window views
+- `interleave(*iterables)` — Round-robin interleave
+- `flatten(nested)` — Flatten one level of nesting
+
+## License
+
+MIT
