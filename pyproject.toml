@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "philiprehberger-list-chunk"
-version = "0.1.0"
+version = "0.1.1"
 description = "Split iterables into evenly sized chunks"
 readme = "README.md"
 license = "MIT"
@@ -24,9 +24,10 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/philiprehberger/py-list-chunk"
+Homepage = "https://github.com/philiprehberger/py-list-chunk#readme"
 Repository = "https://github.com/philiprehberger/py-list-chunk"
 Issues = "https://github.com/philiprehberger/py-list-chunk/issues"
+Changelog = "https://github.com/philiprehberger/py-list-chunk/blob/main/CHANGELOG.md"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/philiprehberger_list_chunk"]
