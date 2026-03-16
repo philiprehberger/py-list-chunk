@@ -1,5 +1,9 @@
 # philiprehberger-list-chunk
 
+[![Tests](https://github.com/philiprehberger/py-list-chunk/actions/workflows/publish.yml/badge.svg)](https://github.com/philiprehberger/py-list-chunk/actions/workflows/publish.yml)
+[![PyPI version](https://img.shields.io/pypi/v/philiprehberger-list-chunk.svg)](https://pypi.org/project/philiprehberger-list-chunk/)
+[![License](https://img.shields.io/github/license/philiprehberger/py-list-chunk)](LICENSE)
+
 Split iterables into evenly sized chunks.
 
 ## Installation
