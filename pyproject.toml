@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "philiprehberger-list-chunk"
-version = "0.1.4"
+version = "0.1.5"
 description = "Split iterables into evenly sized chunks"
 readme = "README.md"
 license = "MIT"
@@ -31,3 +31,9 @@ Changelog = "https://github.com/philiprehberger/py-list-chunk/blob/main/CHANGELO
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/philiprehberger_list_chunk"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.mypy]
+strict = true
