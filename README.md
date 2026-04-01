@@ -38,11 +38,13 @@ flatten([[1, 2], [3, 4]])
 
 ## API
 
-- `chunk(items, size, pad=None)` — Fixed-size chunks
-- `chunk_by(items, key)` — Group consecutive elements by key
-- `sliding_window(items, size, step=1)` — Sliding window views
-- `interleave(*iterables)` — Round-robin interleave
-- `flatten(nested)` — Flatten one level of nesting
+| Function / Class | Description |
+|------------------|-------------|
+| `chunk(items, size, pad=None)` | Fixed-size chunks |
+| `chunk_by(items, key)` | Group consecutive elements by key |
+| `sliding_window(items, size, step=1)` | Sliding window views |
+| `interleave(*iterables)` | Round-robin interleave |
+| `flatten(nested)` | Flatten one level of nesting |
 
 ## Development
 
