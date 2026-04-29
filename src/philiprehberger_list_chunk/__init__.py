@@ -13,6 +13,7 @@ __all__ = [
     "sliding_window",
     "interleave",
     "flatten",
+    "partition",
 ]
 
 T = TypeVar("T")
@@ -139,3 +140,29 @@ def flatten(nested: Iterable[Iterable[T]]) -> list[T]:
     for item in nested:
         result.extend(item)
     return result
+
+
+def partition(
+    items: Iterable[T],
+    predicate: Callable[[T], Any],
+) -> tuple[list[T], list[T]]:
+    """Split *items* into two lists based on *predicate* in a single pass.
+
+    Args:
+        items: The iterable to partition.
+        predicate: A callable returning a truthy value for items that should
+            land in the first list.
+
+    Returns:
+        ``(truthy, falsy)`` — items for which *predicate* returns truthy come
+        first, the rest come second.  Original order is preserved within each
+        list.
+    """
+    truthy: list[T] = []
+    falsy: list[T] = []
+    for item in items:
+        if predicate(item):
+            truthy.append(item)
+        else:
+            falsy.append(item)
+    return truthy, falsy

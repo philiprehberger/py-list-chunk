@@ -1,5 +1,12 @@
 import pytest
-from philiprehberger_list_chunk import chunk, chunk_by, sliding_window, interleave, flatten
+from philiprehberger_list_chunk import (
+    chunk,
+    chunk_by,
+    flatten,
+    interleave,
+    partition,
+    sliding_window,
+)
 
 
 def test_chunk_even():
@@ -72,3 +79,33 @@ def test_flatten():
 
 def test_flatten_empty():
     assert flatten([]) == []
+
+
+def test_partition_mixed():
+    truthy, falsy = partition(range(6), lambda n: n % 2 == 0)
+    assert truthy == [0, 2, 4]
+    assert falsy == [1, 3, 5]
+
+
+def test_partition_all_true():
+    truthy, falsy = partition([1, 2, 3], lambda _: True)
+    assert truthy == [1, 2, 3]
+    assert falsy == []
+
+
+def test_partition_all_false():
+    truthy, falsy = partition([1, 2, 3], lambda _: False)
+    assert truthy == []
+    assert falsy == [1, 2, 3]
+
+
+def test_partition_empty():
+    truthy, falsy = partition([], lambda _: True)
+    assert truthy == []
+    assert falsy == []
+
+
+def test_partition_preserves_order():
+    truthy, falsy = partition(["b", "A", "c", "D"], str.isupper)
+    assert truthy == ["A", "D"]
+    assert falsy == ["b", "c"]

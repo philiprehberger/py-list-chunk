@@ -36,6 +36,17 @@ flatten([[1, 2], [3, 4]])
 # [1, 2, 3, 4]
 ```
 
+### Partition
+
+Split an iterable into `(truthy, falsy)` lists in one pass.
+
+```python
+from philiprehberger_list_chunk import partition
+
+evens, odds = partition(range(6), lambda n: n % 2 == 0)
+# evens == [0, 2, 4], odds == [1, 3, 5]
+```
+
 ## API
 
 | Function / Class | Description |
@@ -45,6 +56,7 @@ flatten([[1, 2], [3, 4]])
 | `sliding_window(items, size, step=1)` | Sliding window views |
 | `interleave(*iterables)` | Round-robin interleave |
 | `flatten(nested)` | Flatten one level of nesting |
+| `partition(items, predicate)` | Split into `(truthy, falsy)` lists in one pass |
 
 ## Development
 
