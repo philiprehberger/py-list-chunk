@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.0 (2026-06-15)
+
+- Add `transpose(matrix)` — transpose a 2D iterable; truncates to the shortest row for jagged input
+- Add `pairwise(items)` — return consecutive overlapping `(a, b)` tuples
+- Add package-card image to README
+
 ## 0.2.0 (2026-04-28)
 
 - Add `partition(items, predicate)` — split an iterable into `(truthy, falsy)` lists in a single pass

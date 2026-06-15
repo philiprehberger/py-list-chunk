@@ -14,6 +14,8 @@ __all__ = [
     "interleave",
     "flatten",
     "partition",
+    "transpose",
+    "pairwise",
 ]
 
 T = TypeVar("T")
@@ -139,6 +141,48 @@ def flatten(nested: Iterable[Iterable[T]]) -> list[T]:
     result: list[T] = []
     for item in nested:
         result.extend(item)
+    return result
+
+
+def transpose(matrix: Iterable[Iterable[T]]) -> list[list[T]]:
+    """Transpose a 2D iterable (rows become columns).
+
+    Jagged input is truncated to the shortest row, so the result has no holes.
+
+    Args:
+        matrix: Iterable of row iterables.
+
+    Returns:
+        Transposed list of lists. Empty input returns ``[]``.
+    """
+    rows = [list(row) for row in matrix]
+    if not rows:
+        return []
+    width = min(len(r) for r in rows)
+    return [[rows[i][j] for i in range(len(rows))] for j in range(width)]
+
+
+def pairwise(items: Iterable[T]) -> list[tuple[T, T]]:
+    """Return consecutive overlapping pairs from *items*.
+
+    Mirrors :func:`itertools.pairwise` but materializes a list.
+
+    Args:
+        items: The iterable to pair.
+
+    Returns:
+        List of ``(a, b)`` tuples where each ``b`` follows ``a``. Returns
+        ``[]`` when *items* has fewer than two elements.
+    """
+    it = iter(items)
+    try:
+        prev = next(it)
+    except StopIteration:
+        return []
+    result: list[tuple[T, T]] = []
+    for current in it:
+        result.append((prev, current))
+        prev = current
     return result
 
 

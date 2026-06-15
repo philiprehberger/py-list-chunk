@@ -4,6 +4,8 @@
 [![PyPI version](https://img.shields.io/pypi/v/philiprehberger-list-chunk.svg)](https://pypi.org/project/philiprehberger-list-chunk/)
 [![Last updated](https://img.shields.io/github/last-commit/philiprehberger/py-list-chunk)](https://github.com/philiprehberger/py-list-chunk/commits/main)
 
+![philiprehberger-list-chunk](https://raw.githubusercontent.com/philiprehberger/py-list-chunk/main/package-card.webp)
+
 Split iterables into evenly sized chunks.
 
 ## Installation
@@ -36,6 +38,20 @@ flatten([[1, 2], [3, 4]])
 # [1, 2, 3, 4]
 ```
 
+### Transpose and pairwise
+
+`transpose(matrix)` swaps rows and columns and truncates to the shortest row, so jagged input stays rectangular. `pairwise(items)` returns consecutive overlapping pairs.
+
+```python
+from philiprehberger_list_chunk import transpose, pairwise
+
+transpose([[1, 2, 3], [4, 5, 6]])
+# [[1, 4], [2, 5], [3, 6]]
+
+pairwise([1, 2, 3, 4])
+# [(1, 2), (2, 3), (3, 4)]
+```
+
 ### Partition
 
 Split an iterable into `(truthy, falsy)` lists in one pass.
@@ -57,6 +73,8 @@ evens, odds = partition(range(6), lambda n: n % 2 == 0)
 | `interleave(*iterables)` | Round-robin interleave |
 | `flatten(nested)` | Flatten one level of nesting |
 | `partition(items, predicate)` | Split into `(truthy, falsy)` lists in one pass |
+| `transpose(matrix)` | Transpose a 2D iterable; jagged input is truncated to the shortest row |
+| `pairwise(items)` | Return consecutive overlapping `(a, b)` tuples |
 
 ## Development
 

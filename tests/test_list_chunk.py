@@ -4,8 +4,10 @@ from philiprehberger_list_chunk import (
     chunk_by,
     flatten,
     interleave,
+    pairwise,
     partition,
     sliding_window,
+    transpose,
 )
 
 
@@ -109,3 +111,35 @@ def test_partition_preserves_order():
     truthy, falsy = partition(["b", "A", "c", "D"], str.isupper)
     assert truthy == ["A", "D"]
     assert falsy == ["b", "c"]
+
+
+def test_transpose_square():
+    assert transpose([[1, 2], [3, 4]]) == [[1, 3], [2, 4]]
+
+
+def test_transpose_rectangular():
+    assert transpose([[1, 2, 3], [4, 5, 6]]) == [[1, 4], [2, 5], [3, 6]]
+
+
+def test_transpose_jagged_truncates():
+    assert transpose([[1, 2, 3], [4, 5]]) == [[1, 4], [2, 5]]
+
+
+def test_transpose_empty():
+    assert transpose([]) == []
+
+
+def test_pairwise_basic():
+    assert pairwise([1, 2, 3, 4]) == [(1, 2), (2, 3), (3, 4)]
+
+
+def test_pairwise_single_element():
+    assert pairwise([1]) == []
+
+
+def test_pairwise_empty():
+    assert pairwise([]) == []
+
+
+def test_pairwise_strings():
+    assert pairwise("abc") == [("a", "b"), ("b", "c")]
